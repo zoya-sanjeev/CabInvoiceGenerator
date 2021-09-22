@@ -18,7 +18,7 @@ public class InvoiceGenerator {
 			double fare=this.calculateFare(ride.distance, ride.time);
 			totalFare+=fare;
 		}
-		return totalFare;
+		return new InvoiceSummary(rides.length, totalFare);
 	}
 
 
