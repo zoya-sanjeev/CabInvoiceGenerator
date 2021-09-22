@@ -1,5 +1,6 @@
 package com.bridgelabz.cabinvoicegenerator;
 
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Assert;
@@ -14,7 +15,7 @@ public class InvoiceServiceTest {
 		double distance = 2.0;
 		int time = 5;
 		double fare = invoiceGenerator.calculateFare(distance, time);
-		Assert.assertEquals(25.0, fare);
+		Assert.assertEquals(25.0, fare,0.0);
 	}
 
 }
