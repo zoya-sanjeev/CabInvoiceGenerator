@@ -55,5 +55,23 @@ public class InvoiceServiceTest {
 		InvoiceSummary expectedSummary= new InvoiceSummary(2, 30.0);
 		Assert.assertEquals(expectedSummary, summary);
 	}
+	
+	@Test
+	public void givenPremiumDistanceAndTime_ShouldReturnTotalPremiumFare() {
+		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+		double distance = 2.0;
+		int time = 5;
+		double fare = invoiceGenerator.calculateFare(distance, time,RideType.PREMIUM_RIDE);
+		assertEquals(40, fare, 0.0);
+	}
+	
+	@Test
+	public void givenPremiumLessDistanceAndTime_ShouldReturnPremiumMinimumFare() {
+		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+		double distance = 0.1;
+		int time = 1;
+		double fare = invoiceGenerator.calculateFare(distance, time,RideType.PREMIUM_RIDE);
+		assertEquals(20, fare, 0.0);
+	}
 
 }
