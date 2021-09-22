@@ -33,11 +33,24 @@ public class InvoiceServiceTest {
 	}
 	
 	@Test
-	public void givenMultipleWrites_ShouldReturnInvoiceSummary() {
+	public void givenMultipleRides_ShouldReturnInvoiceSummary() {
 		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
 		InvoiceSummary summary = invoiceGenerator.calculateFare(rides);
 		InvoiceSummary expectedSummary= new InvoiceSummary(2, 30.0);
 		Assert.assertEquals(expectedSummary, summary);
 	}	
+	
+	@Test
+	public void givenUserId_shouldReturnListOfRides() {
+		InvoiceService invoiceService= new InvoiceService();
+		int userId=12;
+		Ride ride1= new Ride(2.0,5);
+		Ride ride2=new Ride(0.1,1);
+		RideRepository rideRepository =new RideRepository(userId);
+		rideRepository.add(ride1);
+		rideRepository.add(ride2);
+		InvoiceSummary summary=invoiceService.getInvoice(12);
+		Invoice
+	}
 
 }
