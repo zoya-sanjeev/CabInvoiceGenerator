@@ -47,10 +47,11 @@ public class InvoiceServiceTest {
 		Ride ride1= new Ride(2.0,5);
 		Ride ride2=new Ride(0.1,1);
 		RideRepository rideRepository =new RideRepository(userId);
-		rideRepository.add(ride1);
-		rideRepository.add(ride2);
+		rideRepository.add(ride1, userId);
+		rideRepository.add(ride2, userId);
 		InvoiceSummary summary=invoiceService.getInvoice(12);
-		Invoice
+		InvoiceSummary expectedSummary= new InvoiceSummary(2, 30.0);
+		Assert.assertEquals(expectedSummary, summary);
 	}
 
 }
